@@ -20,6 +20,8 @@ Route::get('/', function () {
 Route::get('posts/{post}', function ($slug) {
     $path = __DIR__ . "/../resources/posts/{$slug}.html";
 
+    ddd($path);
+
     if (! file_exists($path)) {
         // option1 : show error message
             // ddd('file does not exist');
@@ -38,5 +40,7 @@ Route::get('posts/{post}', function ($slug) {
         'post' => $post
 
     ]);
-});
+}) ->where('post', '[A-z_\-]+');
+// }) ->whereAlpha('post');
+
 
