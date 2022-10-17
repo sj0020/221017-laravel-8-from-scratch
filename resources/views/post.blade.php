@@ -9,8 +9,7 @@
 </head>
 <body>
     <article>
-        <h1><a href="/post">post 1</a></h1>
-        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolorum aut blanditiis quisquam iste dolor atque maxime animi? Iusto repudiandae sequi dignissimos odit veniam esse magni nisi, est quae maiores possimus.</p>
+  <?= $post; ?>
     </article>
 
     <a href="/">Go Back</a>
