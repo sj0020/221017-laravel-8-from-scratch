@@ -3,7 +3,6 @@ use App\Models\Post;
 // use Faker\Core\File;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Route;
-use Spatie\YamlFrontMatter\YamlFrontMatter;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,22 +16,8 @@ use Spatie\YamlFrontMatter\YamlFrontMatter;
 */
 
 Route::get('/', function () {
-    $files =  File::files(resource_path("posts"));
-    $posts = [];
+    $posts =  Post::all();
 
-    foreach ($files as $file) {
-
-        $document = YamlFrontMatter::parseFile($file);
-
-        $posts[] = new Post(
-            $document->title,
-            $document->slug,
-
-            $document->excerpt,
-            $document->date,
-            $document->body()
-            );
-    }
     // ddd($posts);
     // ddd($posts[0]->body);
     // ddd($posts[0]->slug);
