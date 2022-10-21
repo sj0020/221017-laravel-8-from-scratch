@@ -30,14 +30,16 @@ Route::get('/', function () {
     ]);
 });
 
-Route::get('posts/{post}', function ($id) {
-    // Find a post by its id and pass it to a view called 'post'
-    $post = Post::findOrFail($id);
+// ddd();
+
+
+Route::get('posts/{post:slug}', function (Post $post) { //Post::where('slug', %post)->firstOrFail()
+    // ddd();
+    // Find a post by its post and pass it to a view called 'post'
+    // $post = Post::findOrFail($post);
 
     return view('post', [
         'post' => $post
     ]);
-
-
 });
 // }) ->whereAlpha('post');

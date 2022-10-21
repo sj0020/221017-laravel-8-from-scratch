@@ -10,8 +10,9 @@
 <body>
 <?php foreach($posts as $post) : ?>
     <article>
+        {{-- <?php ddd($posts)?> --}}
         <h1>
-            <a href="/posts/<?= $post->id;?>">
+            <a href="/posts/{{ $post->slug; }}">
                 {{ $post->title }}
             </a>
         </h1>
