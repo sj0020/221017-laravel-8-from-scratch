@@ -17,14 +17,13 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    $posts =  Post::all();
-
+    // $posts =  Post::all();
     // ddd($posts);
     // ddd($posts[0]->body);
     // ddd($posts[0]->slug);
 
     return view('posts', [
-        'posts' => $posts
+        'posts' => Post::with('category')->get()
     ]);
 });
 
