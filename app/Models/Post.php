@@ -11,9 +11,8 @@ class Post extends Model
 
     protected $guarded = [];
 
-    // if :  Route::get('posts/{post}'
-    // public function getRouteKeyName()
-    // {
-    //     return 'slug';
-    // }
+    public function category(){
+        // hasOne, hasMany, belongsTo, belongsToMany
+        return $this->belongsTo(Category::class);
+    }
 }
