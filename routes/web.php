@@ -1,5 +1,7 @@
 <?php
 use App\Models\Post;
+use App\Models\Category;
+
 // use Faker\Core\File;
 use Illuminate\Support\Facades\Route;
 
@@ -21,16 +23,10 @@ Route::get('/', function () {
     // ddd($posts[0]->body);
     // ddd($posts[0]->slug);
 
-    // $posts = Post::all();
-
-    // // ddd($posts);
-
     return view('posts', [
         'posts' => $posts
     ]);
 });
-
-// ddd();
 
 
 Route::get('posts/{post:slug}', function (Post $post) { //Post::where('slug', %post)->firstOrFail()
@@ -43,3 +39,9 @@ Route::get('posts/{post:slug}', function (Post $post) { //Post::where('slug', %p
     ]);
 });
 // }) ->whereAlpha('post');
+
+Route::get('categories/{category:slug}', function (Category $category) {
+    return view('posts', [
+        'posts'=> $category->posts
+    ]);
+});
