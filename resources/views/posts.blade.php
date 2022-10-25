@@ -1,35 +1,15 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Blog</title>
-    <link rel="stylesheet" href="/app.css">
-</head>
-<body>
-<?php foreach($posts as $post) : ?>
-    <article>
-        {{-- <?php ddd($posts)?> --}}
-        <h1>
-            <a href="/posts/{{ $post->slug; }}">
-                {{ $post->title }}
-            </a>
-        </h1>
+<x-layout>
 
-        <p>
-            By <a href="/authors/{{ $post->author->username }}">{{ $post->author->name }}</a>
-            in <a href="/categories/{{ $post->category->slug}}">{{ $post->category->name }}</a>
-        </p>
+    @include('_posts-header')
 
-        <div>
-            <?= $post->excerpt;?>
-        </div>
+    <main class="max-w-6xl mx-auto mt-6 lg:mt-20 space-y-6">
 
-    </article>
+      @if ($posts->count())
+        <x-posts-grid :posts="$posts" />
+      @else
+        <p class='text-center'>No posts yet, please check back later.</p>
+      @endif
 
-<?php endforeach; ?>
+    </main>
 
-
-</body>
-</html>
+  </x-layout>
