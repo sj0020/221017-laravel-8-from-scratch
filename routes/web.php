@@ -19,20 +19,17 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    // $posts =  Post::all();
+    // $posts =  Post::latest()->get();
     // ddd($posts);
-    // ddd($posts[0]->body);
-    // ddd($posts[0]->slug);
 
     return view('posts', [
-        'posts' => Post::latest()->get()
-        // 'posts' => Post::latest()->with(['category','author'])->get()
+        'posts' => Post::latest()->get(),
+        'categories' => Category::all()
     ]);
-});
+})->name('home');
 
 
 Route::get('posts/{post:slug}', function (Post $post) { //Post::where('slug', %post)->firstOrFail()
-    // ddd();
     // Find a post by its post and pass it to a view called 'post'
     // $post = Post::findOrFail($post);
 
@@ -43,15 +40,18 @@ Route::get('posts/{post:slug}', function (Post $post) { //Post::where('slug', %p
 // }) ->whereAlpha('post');
 
 Route::get('categories/{category:slug}', function (Category $category) {
+
     return view('posts', [
-        'posts'=> $category->posts
-        // 'posts'=> $category->posts->load(['category', 'author'])
+        'posts'=> $category->posts,
+        'currentCategory'=> $category,
+        'categories' => Category::all()
+
     ]);
-});
+})->name('category');
 
 Route::get('authors/{author:username}', function (User $author) {
     return view('posts', [
-        'posts'=> $author->posts
-        // 'posts'=> $author->posts->load(['category', 'author'])
+        'posts'=> $author->posts,
+        'categories' => Category::all()
     ]);
 });
