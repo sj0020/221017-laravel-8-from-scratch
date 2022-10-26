@@ -8,7 +8,7 @@
         <div class="relative lg:inline-flex bg-gray-100 rounded-xl">
             <x-dropdown>
                 <x-slot name="trigger">
-                    <button class="py-2 p1-3 pr-9 text-sm font-semibold w-full lg:w-32 text-left flex lg:inline-flex">
+                    <button class="py-2 p1-3 pr-9 text-sm font-semibold w-full lg:w-32 text-left flex lg:inline-flex ml-2" >
                     {{ isset($currentCategory) ? ucwords($currentCategory->name) : 'Categories' }}
 
 
