@@ -19,8 +19,13 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    // $posts =  Post::latest()->get();
+    $posts =  Post::latest();
     // ddd($posts);
+
+    // if (request('search')) {
+    //     // $posts
+
+    // }
 
     return view('posts', [
         'posts' => Post::latest()->get(),
