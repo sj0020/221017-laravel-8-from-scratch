@@ -10,9 +10,13 @@ use Illuminate\Http\Request;
 class PostController extends Controller
 {
     public function index(){
-        // die('dd');
+        // dd(request('search'));
+        // dd(request(['search']));
+        // dd(request());
+        // dd(request()->only('search'));
+
         return view('posts', [
-            'posts' => $this->getPosts(),
+            'posts' => Post::latest()->filter(request(['search']))->get(),
             'categories' => Category::all()
         ]);
     }
@@ -22,9 +26,4 @@ class PostController extends Controller
             'post' => $post
         ]);
     }
-
-    protected function getPosts(){
-        return Post::latest()->filter()->get();
-    }
-
 }
